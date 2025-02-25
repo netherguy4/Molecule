@@ -2,10 +2,10 @@
   {
     "title": "How to drive sales in SaaS",
     "subtitle": "Vestibulum sit amet urna turpis. Mauris euismod elit et nisi ultrices, ut faucibus orci tincidunt.",
-    "imageUrl": "/img/blog-1.jpg",
+    "imageUrl": "./img/blog-1.jpg",
     "author": {
       "name": "Dwight Schrute",
-      "imageUrl": "/img/author-1.jpg",
+      "imageUrl": "./img/author-1.jpg",
       "date": "January 25, 2022",
       "time": 28
     }
@@ -13,10 +13,10 @@
   {
     "title": "Hiring the right talent",
     "subtitle": "Nulla rhoncus feugiat eros quis consectetur. Morbi neque ex, condimentum dapibus congue et, vulputate ut ligula.",
-    "imageUrl": "/img/blog-2.jpg",
+    "imageUrl": "./img/blog-2.jpg",
     "author": {
       "name": "Lexus Simonis",
-      "imageUrl": "/img/author-2.jpg",
+      "imageUrl": "./img/author-2.jpg",
       "date": "January 25, 2022",
       "time": 21
     }
@@ -24,10 +24,10 @@
   {
     "title": "Is remote work for you? (Yes it is)",
     "subtitle": "Duis tristique sed lorem a vestibulum. Cras commodo consequat orci, in convallis risus egestas non.",
-    "imageUrl": "/img/blog-3.jpg",
+    "imageUrl": "./img/blog-3.jpg",
     "author": {
       "name": "Doug Howell",
-      "imageUrl": "/img/author-3.jpg",
+      "imageUrl": "./img/author-3.jpg",
       "date": "January 25, 2022",
       "time": 29
     }

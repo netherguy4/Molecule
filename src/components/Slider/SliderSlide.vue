@@ -1,5 +1,5 @@
 <script setup>
-import CIcon from './CIcon.vue'
+import CIcon from '../CIcon.vue'
 
 const props = defineProps({
   logo: String,

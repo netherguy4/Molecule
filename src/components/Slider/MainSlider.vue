@@ -31,7 +31,7 @@ const modules = [Navigation, Pagination, A11y]
             title="Using molecule for our web was the best decision we made last year — and we made a ton of
             great decisions, trust me!"
             logo="slide1"
-            image-url="/img/slide1.jpg"
+            image-url="/img/slide-1.jpg"
           />
         </swiper-slide>
         <button class="swiper-button-prev">

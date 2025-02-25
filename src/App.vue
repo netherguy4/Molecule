@@ -1,11 +1,12 @@
 <script setup>
-import { ref, onMounted, provide } from 'vue'
+import { ref, onMounted, provide, watch } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { TextPlugin } from 'gsap/TextPlugin'
 import Lenis from 'lenis'
 
 import AppHeader from './components/Header/AppHeader.vue'
+import AppDrawer from './components/AppDrawer.vue'
 import MainHero from './components/Hero/MainHero.vue'
 import MainFeatures from './components/MainFeatures.vue'
 import MainStats from './components/MainStats.vue'
@@ -35,10 +36,40 @@ gsap.ticker.lagSmoothing(0)
 
 provide('lenis', lenis)
 
-// *Scroll smoothing and triggers ----------------------------------------------------------------------------------------------
+// * ---------------------------------------------------------------------------------------------------------------------------
+
+const drawerOpened = ref(false)
+provide('drawerOpened', drawerOpened)
+
+// *Animations -----------------------------------------------------------------------------------------------------------------
 
 const main = ref(null)
-
+const drawerAnimation = () => {
+  let tl = gsap
+    .timeline({ paused: true })
+    .fromTo(
+      '.drawer',
+      { width: 0, autoAlpha: 0 },
+      { width: 'auto', autoAlpha: 1, ease: 'power3.inOut' },
+    )
+    .fromTo('.drawer', { scaleX: 0 }, { scaleX: 1, ease: 'back.inOut(2)' }, '<')
+    .fromTo('.drawer>*', { x: 100 }, { x: 0, ease: 'power1.inOut' }, '<0.15')
+  watch(drawerOpened, () => {
+    if (drawerOpened.value) {
+      tl.play()
+      lenis.stop()
+    } else {
+      tl.reverse()
+      lenis.start()
+    }
+  })
+  document.body.addEventListener('click', (e) =>
+    e.target.closest('div') === document.querySelector('.drawer') ||
+    e.target.closest('header') === document.querySelector('.header')
+      ? null
+      : (drawerOpened.value = false),
+  )
+}
 const digitCounterAnimation = () => {
   gsap.from('[data-animated-counter]', {
     scrollTrigger: {
@@ -249,6 +280,7 @@ const logoHoverAnimation = () => {
 }
 
 onMounted(() => {
+  drawerAnimation()
   digitCounterAnimation()
   sectionsAnimation()
   companiesLogoAnimation()
@@ -261,6 +293,7 @@ onMounted(() => {
 
 <template>
   <AppHeader class="header" />
+  <AppDrawer />
   <main ref="main" class="main">
     <MainHero class="main__hero" />
     <MainFeatures id="features" data-gsap class="main__section" />

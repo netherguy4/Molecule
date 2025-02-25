@@ -3,6 +3,7 @@ import { inject } from 'vue'
 import HeaderNav from './HeaderNav.vue'
 import logo from '@/assets/svg/logo.svg'
 
+const drawerOpened = inject('drawerOpened')
 const lenis = inject('lenis')
 </script>
 
@@ -23,33 +24,18 @@ const lenis = inject('lenis')
       <HeaderNav class="header__nav" />
       <div class="header__buttons">
         <button class="header__button">Buy now</button>
-        <button class="header__button _burger">
-          <svg
-            class="header__burger"
-            width="16"
-            viewBox="0 0 600 468"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M33.3334 434H566.667"
-              stroke="white"
-              stroke-width="66.6667"
-              stroke-linecap="round"
-            />
-            <path
-              d="M33.3334 234H566.667"
-              stroke="white"
-              stroke-width="66.6667"
-              stroke-linecap="round"
-            />
-            <path
-              d="M33.3334 34H566.667"
-              stroke="white"
-              stroke-width="66.6667"
-              stroke-linecap="round"
-            />
-          </svg>
+        <button
+          class="header__button _burger"
+          :class="drawerOpened ? '_active' : null"
+          @click="
+            () => {
+              drawerOpened = !drawerOpened
+            }
+          "
+        >
+          <div class="header__burger-line"></div>
+          <div class="header__burger-line"></div>
+          <div class="header__burger-line"></div>
         </button>
       </div>
     </div>
@@ -92,15 +78,33 @@ const lenis = inject('lenis')
     box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.05);
     transition: $hoverTime;
     &._burger {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
       @media (min-width: $L) {
         display: none;
       }
-      @include hover {
+      &._active .header__burger-line {
+        scale: 1.29 1;
+        &:first-child {
+          rotate: 38deg;
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:last-child {
+          rotate: -38deg;
+        }
       }
     }
-    & .header__burger {
-      transition: $hoverTime;
-    }
+  }
+  &__burger-line {
+    transition: $trTime;
+    transform-origin: left center;
+    width: 1em;
+    border: solid toem(1) #fff;
+    border-radius: toem(4);
   }
 }
 </style>

@@ -20,8 +20,13 @@
     display: flex;
     align-items: center;
     gap: 2em;
+    flex-direction: column;
+    @media (min-width: $L) {
+      flex-direction: row;
+    }
   }
   &__li {
+    display: flex;
     flex-shrink: 0;
     transition: 0.3s;
     position: relative;
@@ -44,6 +49,7 @@
     }
   }
   &__link {
+    flex-shrink: 0;
     color: #1e313b;
     &:visited {
       color: #1e313b;

@@ -304,7 +304,7 @@ onMounted(() => {
     <MainSlider data-gsap class="main__section _gray" />
     <MainBubble data-gsap class="main__section _purple" />
     <MainBlog data-gsap class="main__section" />
-    <MainInfo2 data-gsap="scale" class="main__section _purple" />
+    <MainInfo2 class="main__section _purple" />
   </main>
   <AppFooter />
 </template>
